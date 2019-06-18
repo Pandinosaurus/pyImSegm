@@ -40,7 +40,7 @@ from run_segm_slic_model_graphcut import load_image
 from run_segm_slic_model_graphcut import TYPES_LOAD_IMAGE
 
 
-NB_THREADS = max(1, int(mproc.cpu_count() * 0.9))
+NB_WORKERS = max(1, int(mproc.cpu_count() * 0.9))
 PATH_IMAGES = os.path.join(tl_data.update_path('data_images'),
                            'drosophila_ovary_slice')
 PATH_RESULTS = tl_data.update_path('results', absolute=True)
@@ -78,7 +78,7 @@ def arg_parse_params(params):
                         default=0.25, help='superpixel regularization')
     parser.add_argument('--slico', action='store_true', required=False,
                         default=False, help='using SLICO (ASLIC)')
-    parser.add_argument('--nb_workers', type=int, required=False, default=NB_THREADS,
+    parser.add_argument('--nb_workers', type=int, required=False, default=NB_WORKERS,
                         help='number of processes in parallel')
     params = vars(parser.parse_args())
     logging.info('ARG PARAMETERS: \n %r', params)

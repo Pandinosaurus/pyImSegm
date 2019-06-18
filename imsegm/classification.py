@@ -50,7 +50,7 @@ METRIC_AVERAGES = ('macro', 'weighted')
 METRIC_SCORING = ('f1_macro', 'accuracy', 'precision_macro', 'recall_macro')
 # rounding unique features, in case to detail precision
 ROUND_UNIQUE_FTS_DIGITS = 3
-NB_THREADS_SERACH = min(1, mproc.cpu_count() * 0.5)
+NB_WORKERS_SERACH = min(1, mproc.cpu_count() * 0.5)
 
 
 DICT_SCORING = {
@@ -647,7 +647,7 @@ def relabel_sequential(labels, uq_labels=None):
 
 def create_classif_search_train_export(clf_name, features, labels, cross_val=10,
                                        nb_search_iter=100, search_type='random',
-                                       eval_metric='f1', nb_workers=NB_THREADS_SERACH,
+                                       eval_metric='f1', nb_workers=NB_WORKERS_SERACH,
                                        path_out=None, params=None, pca_coef=0.98,
                                        feature_names=None, label_names=None):
     """ create classifier and train it once or find best parameters.

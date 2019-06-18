@@ -31,7 +31,7 @@ import imsegm.annotation as seg_annot
 PATH_INPUT = os.path.join('data_images', 'drosophila_ovary_slice', 'segm', '*.png')
 PATH_OUTPUT = os.path.join('data_images', 'drosophila_ovary_slice', 'segm_rgb')
 NAME_JSON_DICT = 'dictionary_label-color.json'
-NB_THREADS = max(1, int(mproc.cpu_count() * 0.9))
+NB_WORKERS = max(1, int(mproc.cpu_count() * 0.9))
 
 
 def parse_arg_params():
@@ -47,7 +47,7 @@ def parse_arg_params():
     parser.add_argument('-clrs', '--path_colors', type=str, required=False,
                         help='json with colour-label dict', default=None)
     parser.add_argument('--nb_workers', type=int, required=False,
-                        help='number of jobs in parallel', default=NB_THREADS)
+                        help='number of jobs in parallel', default=NB_WORKERS)
     args = vars(parser.parse_args())
     for n in ['path_images', 'path_out']:
         p_dir = tl_data.update_path(os.path.dirname(args[n]))
