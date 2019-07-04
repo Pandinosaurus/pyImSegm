@@ -26,7 +26,7 @@ import run_ellipse_annot_match as r_match
 
 IMAGE_CHANNEL = 0  # image channel for mass extraction
 
-NB_THREADS = max(1, int(mproc.cpu_count() * 0.8))
+NB_WORKERS = max(1, int(mproc.cpu_count() * 0.8))
 PATH_IMAGES = os.path.join(tl_data.update_path('data_images'),
                            'drosophila_ovary_slice')
 PATH_RESULTS = tl_data.update_path('results', absolute=True)
