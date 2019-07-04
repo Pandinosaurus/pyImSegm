@@ -27,7 +27,7 @@ import imsegm.utilities.experiments as tl_expt
 import imsegm.annotation as seg_annot
 
 PATH_IMAGES = os.path.join('data_images', 'drosophila_ovary_slice', 'segm', '*.png')
-NB_THREADS = max(1, int(mproc.cpu_count() * 0.9))
+NB_WORKERS = max(1, int(mproc.cpu_count() * 0.9))
 
 
 def parse_arg_params():
@@ -41,7 +41,7 @@ def parse_arg_params():
     parser.add_argument('--label', type=int, required=False, nargs='+',
                         help='labels to be replaced', default=[-1])
     parser.add_argument('--nb_workers', type=int, required=False,
-                        help='number of jobs in parallel', default=NB_THREADS)
+                        help='number of jobs in parallel', default=NB_WORKERS)
     args = vars(parser.parse_args())
     p_dir = tl_data.update_path(os.path.dirname(args['path_images']))
     assert os.path.isdir(p_dir), 'missing folder: %s' % args['path_images']

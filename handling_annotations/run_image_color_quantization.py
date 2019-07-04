@@ -32,7 +32,7 @@ import imsegm.utilities.experiments as tl_expt
 import imsegm.annotation as seg_annot
 
 PATH_IMAGES = os.path.join('data_images', 'drosophila_ovary_slice', 'segm_rgb', '*.png')
-NB_THREADS = max(1, int(mproc.cpu_count() * 0.9))
+NB_WORKERS = max(1, int(mproc.cpu_count() * 0.9))
 THRESHOLD_INVALID_PIXELS = 5e-3
 
 
@@ -51,7 +51,7 @@ def parse_arg_params():
                         help='percentage of pixels of a color to be removed',
                         default=THRESHOLD_INVALID_PIXELS)
     parser.add_argument('--nb_workers', type=int, required=False,
-                        help='number of jobs in parallel', default=NB_THREADS)
+                        help='number of jobs in parallel', default=NB_WORKERS)
     args = vars(parser.parse_args())
     p_dir = tl_data.update_path(os.path.dirname(args['path_images']))
     assert os.path.isdir(p_dir), 'missing folder: %s' % args['path_images']
