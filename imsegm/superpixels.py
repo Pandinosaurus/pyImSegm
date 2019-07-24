@@ -16,6 +16,7 @@ import numpy as np
 import skimage.segmentation as ski_segm
 from skimage import measure
 
+#: spacing among neighboring pixels in axies X, Y, Z
 IMAGE_SPACING = (1, 1, 1)
 
 

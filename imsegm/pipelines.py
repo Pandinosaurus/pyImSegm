@@ -22,11 +22,15 @@ from imsegm.classification import (
     DEFAULT_CLASSIF_NAME, DEFAULT_CLUSTERING, convert_set_features_labels_2_dataset,
     CrossValidateGroups, create_classif_search_train_export)
 
-CLASSIF_PARAMS = {'method': 'kNN', 'nb': 10}
+#: select basic features extracted from superpixels
 FTS_SET_SIMPLE = FEATURES_SET_COLOR
+#: select default Classifier for supervised segmentation
 CLASSIF_NAME = DEFAULT_CLASSIF_NAME
+#: select default Modeling/clustering for unsupervised segmentation
 CLUSTER_METHOD = DEFAULT_CLUSTERING
+#: define how many images will be left out during cross-validation training
 CROSS_VAL_LEAVE_OUT = 2
+#: default number of workers
 NB_WORKERS = nb_workers(0.6)
 
 
